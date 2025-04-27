@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Curva de Concordia U-Pb</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        .error { color: red; }
+        .resultados { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<h1>Curva de Concordia U-Pb</h1>
+
+<form action="/" method="POST" enctype="multipart/form-data">
+    <label>Subir CSV (columnas 'x' y 'y'):</label><br><br>
+    <input type="file" name="file" required><br><br>
+
+    <label>Error relativo (%):</label>
+    <input type="number" step="0.1" name="error" value="2" required><br><br>
+
+    <label>Nivel Sigma:</label>
+    <select name="sigma" required>
+        <option value="1">1σ</option>
+        <option value="2">2σ</option>
+        <option value="3">3σ</option>
+    </select><br><br>
+
+    <button type="submit">Generar Curva</button>
+</form>
+
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
+
+{% if graphJSON %}
+<div id="grafico" style="height:600px;"></div>
+<script>
+    var graphs = {{ graphJSON | safe }};
+    Plotly.newPlot('grafico', graphs.data, graphs.layout);
+</script>
+
+<div class="resultados">
+    <p>Edad promedio: {{ resultados.edad }} ± {{ resultados.incertidumbre }} Ma</p>
+    <p>MSWD: {{ resultados.mswd }}</p>
+    <p>p-valor: {{ resultados.pvalor }}</p>
+</div>
+{% endif %}
+
+<footer style="margin-top: 40px; font-size: 12px;">Desarrollado por Santiago Cruz</footer>
+
+</body>
+</html>

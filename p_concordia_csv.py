@@ -144,7 +144,7 @@ def cargar_y_graficar():
         ax.set_xlabel(r'$^{207}$Pb/$^{235}$U')
         ax.set_ylabel(r'$^{206}$Pb/$^{238}$U')
         ax.set_title(
-            f"Curva de Concordia + Datos\n"
+            f"Curva de Concordia U-Pb (x = 207Pb/235U, y = 206Pb/238U)\n"
             f"Edad promedio = {edad_ma:.1f} ± {incertidumbre_edad_ma:.1f} Ma\n"
             f"MSWD = {mswd:.3f} | p-valor = {p_valor:.3f}",
             fontsize=14
@@ -171,7 +171,7 @@ ventana = tk.Tk()
 ventana.title("Concordia U-Pb + Datos Experimentales")
 ventana.configure(bg="white")
 
-titulo = tk.Label(ventana, text="Curva de Concordia U-Pb con Datos CSV", font=("Arial", 18, "bold"), bg="white")
+titulo = tk.Label(ventana, text="Curva de Concordia U-Pb (x = 207Pb/235U, y = 206Pb/238U)", font=("Arial", 18, "bold"), bg="white")
 titulo.pack(pady=10)
 
 try:

@@ -161,14 +161,14 @@ def guardar_grafica():
         archivo = filedialog.asksaveasfilename(defaultextension='.png', filetypes=[("PNG files", '*.png')])
         if archivo:
             fig.savefig(archivo, dpi=300)
-            messagebox.showinfo("Guardado", "Gráfica guardada correctamente.")
+            messagebox.showinfo("Guardado", "⚛️ Gráfica guardada correctamente ⚛️.")
     else:
         messagebox.showwarning("Advertencia", "No hay gráfica para guardar.")
 
 # ----------------- Interfaz gráfica -----------------
 
 ventana = tk.Tk()
-ventana.title("Concordia U-Pb + Datos Experimentales")
+ventana.title("Concordia U-Pb")
 ventana.configure(bg="white")
 
 titulo = tk.Label(ventana, text="Curva de Concordia U-Pb (x = 207Pb/235U, y = 206Pb/238U)", font=("Arial", 18, "bold"), bg="white")
